@@ -1,0 +1,63 @@
+<html>
+<head>
+    <style>
+
+        #form{
+        display:none;
+        }
+    </style>
+</head>
+<body>
+<span>To enter url select Url and to upload media file select MediaFile</span>
+<select id = "media" >
+        <option value="" selected disabled>--Select your choice--</option>
+        <option value="Url">Url</option>
+        <option value="MediaFile">MediaFile</option>
+</select>
+
+<form method="post" enctype="multipart/form-data" id="form">
+    {% csrf_token %}
+    <br>
+    <div class = 'class1'>
+        <label>Enter Url</label>
+        {{form.url.errors}}
+        {{form.url}}
+    </div>
+    <br>
+    <div class = 'class2'>
+        <label>Upload your file</label>
+        {{form.file}}
+        {{form.url.errors}}
+    </div>
+    <br>
+    <div class = 'class3'>
+        <label>Enter password</label>
+        {{form.password}}
+    </div>
+    <br>
+    <input type="submit" value="upload">
+</form>
+</body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#media").change(function () {
+            if ($(this).val() == "Url") {
+                $("#form").css('display', 'block');
+                $("#id_url").attr('required', '');
+                $("#id_file").attr('required', false);
+                $(".class1").css("display","block");
+                $(".class2").css("display","none");
+            }
+            else if ($(this).val() == "MediaFile") {
+                $("#form").css('display', 'block');
+                $("#id_file").attr('required', '');
+                $("#id_url").attr('required', false)
+                $(".class2").css("display","block");
+                $(".class1").css("display","none");
+
+
+            }
+        });
+    });
+</script>
