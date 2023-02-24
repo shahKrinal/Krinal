@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("app", models.CharField(max_length=200)),
+                ("urlapp", models.CharField(max_length=200)),
                 ("slug", models.CharField(max_length=15)),
             ],
         ),

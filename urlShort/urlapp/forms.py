@@ -1,5 +1,5 @@
 from django import forms
-from app.models import FileData
+from urlapp.models import UrlData
 from django.core.exceptions import ValidationError
 
 
@@ -9,7 +9,7 @@ class UploadForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = FileData
+        model = UrlData
         fields = ['url', 'file', 'password']
 
     def clean(self):
