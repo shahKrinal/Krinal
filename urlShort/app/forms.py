@@ -20,5 +20,6 @@ class UploadForm(forms.ModelForm):
         if not file and not url:
             msg = "Please enter url or upload file."
             self.add_error('url', msg)
+            print("msg")
 
         return cleaned_data
